@@ -11,7 +11,8 @@
         <fieldset>
             <legend> SIMPLE CALCULATOR </legend>
         <br>
-        <jsp:include page="formCalc.jsp"/>
+        <%--<jsp:include page="formCalc.jsp"/>--%>
+        <jsp:include page="formUserName.jsp"/>
         </fieldset>
 
     </h2>

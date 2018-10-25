@@ -1,5 +1,7 @@
 package exercises;
 
+//3. Kalkulator w postaci formularza html, który przekaże operator (+, - lub *) i dwie liczby do servletu, który obliczy wynik i zwróci stronę z wartością
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

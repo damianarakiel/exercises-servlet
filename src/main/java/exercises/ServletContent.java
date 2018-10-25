@@ -16,7 +16,9 @@ import java.util.Arrays;
 public class ServletContent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Zad.1
 //        resp.getOutputStream().print("To jest mój tekst");
+        // Zad.2
         req.setAttribute("tekst", Arrays.asList("To jest mój tekst", "To jest mój drugi tekst", "To jest mój trzeci tekst"));
         req.getRequestDispatcher("content.jsp").forward(req, resp);
     }
