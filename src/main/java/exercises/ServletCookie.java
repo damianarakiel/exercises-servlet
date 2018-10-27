@@ -6,25 +6,25 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.stream.Stream;
 
 @WebServlet("/cookie")
 public class ServletCookie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String cookieValue = null;
         Cookie[] cookies = req.getCookies();
-        HttpSession session = req.getSession();
-        req.setAttribute("userName", session.getAttribute("userName"));
+        if(cookies != null){
+            cookieValue = Stream.of(cookies).filter(cookie -> "nameCookie".equals(cookie.getName())).findAny().map(Cookie::getValue).orElse("DEFAULTNAME");
+        }
+        req.setAttribute("nameAttrFromCookie", cookieValue);
         req.getRequestDispatcher("cookie.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String value = req.getParameter("userName");
-        Cookie cookie = new Cookie("userName", value);
-        resp.addCookie(cookie);
-        HttpSession session = req.getSession();
-        session.setAttribute("userName", value);
-        System.out.println(cookie.getValue());
+
+        resp.addCookie(new Cookie("nameCookie", req.getParameter("userName")));
         resp.sendRedirect("cookie");
     }
 }

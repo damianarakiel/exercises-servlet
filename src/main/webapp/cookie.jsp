@@ -6,6 +6,12 @@
     <title>Name</title>
 </head>
 <body>
-<c:out value = "Hi ${userName}"/>
+<center>
+    <h2>
+<form action="/cookie" method="post" >
+    Name: <input type=text name="userName" value="${nameAttrFromCookie}"/>
+</form>
+    </h2>
+</center>
 </body>
 </html>

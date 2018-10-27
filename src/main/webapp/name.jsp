@@ -6,6 +6,13 @@
     <title>Name</title>
 </head>
 <body>
+<center>
+    <h2>
+<form action="/name" method="post" >
+    Give me your name: <input type=text name="userName"/>
+</form>
 <c:out value = "Hi ${userName}"/>
+    </h2>
+</center>
 </body>
 </html>

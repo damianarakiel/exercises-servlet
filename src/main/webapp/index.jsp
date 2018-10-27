@@ -6,16 +6,16 @@
 </head>
 <body>
 <center>
-    <h2>
-        <br>
+
+        <%--<br>
         <fieldset>
-            <legend> SIMPLE CALCULATOR </legend>
+            <legend> SIMPLE CALCULATOR </legend>--%>
         <br>
         <%--<jsp:include page="formCalc.jsp"/>--%>
-        <jsp:include page="formUserName.jsp"/>
+        <%--<jsp:include page="name.jsp"/>--%>
+        <jsp:include page="cookie.jsp"/>
         </fieldset>
 
-    </h2>
 </center>
 </body>
 </html>

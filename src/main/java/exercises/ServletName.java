@@ -14,15 +14,15 @@ import java.io.IOException;
 public class ServletName extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        req.setAttribute("userName", session.getAttribute("userName"));
+        req.setAttribute("userName", req.getSession().getAttribute("userName"));
         req.getRequestDispatcher("name.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("userName");
         HttpSession session = req.getSession();
-        session.setAttribute("userName", req.getParameter("userName"));
+        session.setAttribute("userName", name);
         resp.sendRedirect("name");
     }
 }

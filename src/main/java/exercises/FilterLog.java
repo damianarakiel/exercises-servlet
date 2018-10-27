@@ -4,30 +4,22 @@ package exercises;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/cookie")
-public class FilterLog implements Filter {
+@WebFilter("/*")
+public class FilterLog extends HttpFilter {
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+    protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         System.out.println("filter log message");
-//        System.out.println(request.getParameter("userName"));
-        httpServletRequest.getMethod();
-        httpServletRequest.getParameterNames();
-        httpServletRequest.getRemoteAddr();
-        chain.doFilter(request, response);
+        System.out.println(req.getParameter("userName"));
+        System.out.println("HTTPMethod: " + req.getMethod());
 
+        req.setAttribute("decodeParams", "param0");
+
+        chain.doFilter(req, res);
     }
+
 }
